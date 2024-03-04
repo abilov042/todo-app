@@ -2,6 +2,8 @@ package com.example.todoapp.controller;
 
 import com.example.todoapp.core.result.DataResult;
 import com.example.todoapp.core.result.Result;
+import com.example.todoapp.dto.SaveDailyTaskDto;
+import com.example.todoapp.dto.TaskResponseDto;
 import com.example.todoapp.entity.Task;
 import com.example.todoapp.service.abstracts.ITaskService;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +18,8 @@ public class TaskController {
     private final ITaskService iTaskService;
 
     @PostMapping("/save")
-    public ResponseEntity<DataResult<Task>> save(@RequestBody Task task){
-        return ResponseEntity.ok(this.iTaskService.save(task));
+    public ResponseEntity<DataResult<TaskResponseDto>> saveDailyTask(@RequestBody SaveDailyTaskDto saveDailyTaskDto){
+        return ResponseEntity.ok(this.iTaskService.saveDailyTask(saveDailyTaskDto));
     }
 
     @DeleteMapping("/delete")

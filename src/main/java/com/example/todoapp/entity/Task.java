@@ -13,12 +13,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "task_name")
-    private String taskName;
+    private String task;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -26,4 +27,7 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(name = "expire")
+    private boolean expire;
 }

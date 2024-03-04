@@ -5,24 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
-@Table(name = "users")
+@Table(name ="timely_tasks")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class TimelyTask {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "expire_date")
+    private LocalDateTime expireDate;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "password")
-    private String password;
-
+    @OneToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
 }
